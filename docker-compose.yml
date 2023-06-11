@@ -22,10 +22,11 @@ services:
       - yapi-mongo
     restart: unless-stopped
   yapi-mongo:
-    image: mongo:latest
+    image: mongo:5.0
     container_name: yapi-mongo
     volumes:
       - ./data/db:/data/db
+      - ./initdb.d:/docker-entrypoint-initdb.d
     expose:
       - 27017
     restart: unless-stopped
